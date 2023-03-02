@@ -26,18 +26,7 @@ namespace COMP003A.Assignment7
 
             SectionSeparator("Array - IsPalindrome Section");
 
-            string palin;
-            Console.WriteLine("Please enter a word to check if it is a palindrome: ");
-            palin = Console.ReadLine();
 
-            if (IsPalindrome(palin) == true) 
-            {
-                Console.WriteLine($"Is the word {palin} palindrome: True");
-            }
-            else
-            {
-                Console.WriteLine($"Is the word {palin} palindrome: False");
-            }
 
 
 

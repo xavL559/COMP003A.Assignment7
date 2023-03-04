@@ -5,6 +5,10 @@
 5    * 
 6    */
 
+using System;
+using System.Reflection.Metadata.Ecma335;
+using static System.Formats.Asn1.AsnWriter;
+
 namespace COMP003A.Assignment7
 {
     internal class Program
@@ -18,20 +22,54 @@ namespace COMP003A.Assignment7
             letter= Console.ReadLine();
             char lett = Convert.ToChar(letter);
 
-            string word;
+            string words;
             Console.WriteLine("Please enter a word: ");
-            word = Console.ReadLine();
+            words = Console.ReadLine();
+
             
 
+            int winner = CharacterCounter(lett, words);
+
+            Console.WriteLine(winner);
 
             SectionSeparator("Array - IsPalindrome Section");
 
+            string palin;
+            Console.Write("Please enter a word to check if it is a palindrome:");
+            palin = Console.ReadLine();
 
-
-
+            if (IsPalindrome(palin) == true) 
+            {
+                Console.WriteLine($"Is the word {palin} palindrome: True");
+            }
+            else 
+            {
+                Console.WriteLine($"Is the word {palin} palindrome: False");
+            }
 
             SectionSeparator("List - Add section");
 
+            List<string> names = new List<string>();
+            char userInput = default;
+            do
+            {
+                Console.WriteLine("Please enter a name ");
+                string name = Console.ReadLine();
+                names.Add(name);
+
+
+                Console.WriteLine("Press any key to add more or (e) to exit.");
+                userInput = Console.ReadLine;
+            } while (userInput == 'E' || userInput == 'e');
+
+            SectionSeparator("List - Traversal Section");
+
+            TraverseList(names);
+
+
+            SectionSeparator("List - Reverse Traversal Section");
+
+            TraverseListReverse(names);
         }
 
         static void SectionSeparator(string section)
@@ -44,8 +82,12 @@ namespace COMP003A.Assignment7
             int count = 0;
             for (int i = 0; i < word.Length; i++) 
             {
-                count++;
+               if (characterinput == word[i])
+                {
+                    count++;
+                }
             }
+            Console.WriteLine($"There are {count} letter {characterinput} in the word {word}");
             characterinput = char.ToLower(characterinput);
             word = word.ToLower();
             return count;
